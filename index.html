@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="background-color: rgba(0, 0, 255, 0);">
         <div class="step active" id="step1">
             <h2>เลือกจำนวนขาที่ต้องการ</h2>
             <br>
@@ -28,40 +28,50 @@
         </div>
 
         <div class="step" id="step2">
-            <br> <br> <br> <br> <br>
-            <br> <br> <br> <br> <br>
-            <br> <br> <br> <br> <br>
-            <br> <br> <br> <br> <br>
-            <h2>ส่วนของเจ้า</h2>
-            <div class="btn-container">
-                <div class="btn-column" id="numberButtons" style="position: relative;"></div>
-                <div class="btn-column" id="bounceButtons"></div>
-            </div>
-            <div class="btn-group" style="display: flex; justify-content: space-between;">
-                <button class="btn" id="backButton2" class="hidden">Back</button>
-                <button id="next2" class="btn" onclick="nextStep()">Next</button>
+            <!-- Score display -->
+            <h2>ส่วนของเจ้ามือ</h2>
 
+            <div class="btn-container ">
+                <!-- Left Column -->
+
+                <div class="btn-column" id="numberButtons">
+                    <!-- Add your buttons here -->
+                </div>
+                <!-- Right Column -->
+
+                <div class="btn-column" id="bounceButtons">
+                    <!-- Add your buttons here -->
+                </div>
+            </div>
+            <div class="btn-group">
+                <div style="display: flex;justify-content: space-between;"> <button class="btn"
+                        id="backButton2">Back</button>
+                    <button id="next2" class="btn" onclick="nextStep()">Next</button>
+                </div>
             </div>
         </div>
 
         <div class="step" id="step3">
-            <br> <br> <br> <br> <br>
-            <br> <br> <br> <br> <br>
-            <br> <br> <br> <br> <br>
             <h2 id="step3Title">ขาที่ 1</h2>
+            <!-- Score display -->
+            <!-- <div class="score-display">คะแนน: 150</div> -->
             <div class="btn-container">
-                <div class="btn-column" id="pointsNumberButtons" style="position: relative;"></div>
-                <div class="btn-column" id="pointsBounceButtons"></div>
+                <!-- Left Column -->
+                <div class="btn-column" id="pointsNumberButtons">
+                    <!-- Add your buttons here -->
+                </div>
+                <!-- Right Column -->
+                <div class="btn-column" id="pointsBounceButtons">
+                    <!-- Add your buttons here -->
+                </div>
             </div>
-            <div class="btn-group" style="display: flex; justify-content: space-between;">
-                <button class="btn" id="backButton3">Back</button>
-                <button id="next3" class="btn" onclick="nextStep()">Next</button>
-
-
+            <div class="btn-group">
+                <div style="display: flex;justify-content: space-between;"> <button class="btn"
+                        id="backButton3">Back</button>
+                    <button id="next3" class="btn" onclick="nextStep()">Next</button>
+                </div>
             </div>
         </div>
-
-
 
         <div class="step" id="step4">
             <h2>สรุปผล</h2>

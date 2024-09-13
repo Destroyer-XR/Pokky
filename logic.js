@@ -105,7 +105,7 @@ function selectStep2Button(button, value) {
 }
 
 const pointsNumberButtons = document.getElementById("pointsNumberButtons");
-for (let i = 1; i <= 9; i++) {
+for (let i = 0; i <= 9; i++) {
   const btn = document.createElement("button");
   btn.textContent = i;
   btn.classList.add("number-btn");
@@ -116,7 +116,7 @@ for (let i = 1; i <= 9; i++) {
 }
 
 const pointsBounceButtons = document.getElementById("pointsBounceButtons");
-for (let i = 1; i <= 9; i++) {
+for (let i = 0; i <= 9; i++) {
   const btn = document.createElement("button");
   btn.textContent = i + " เด้ง";
   btn.classList.add("number-btn", "red");
@@ -179,14 +179,37 @@ function displaySummary() {
     summary.innerHTML += `<p>ขา ${index + 1}: ${point} แต้ม</p>`;
   });
 }
-
 document.getElementById("backButton3").addEventListener("click", () => {
-  previousStep();
-  if (currentLegIndex > 0) currentLegIndex--;
-  updateStep3Title();
-  resetPointSelection();
-  updateNextButtonVisibility();
+  // ตรวจสอบว่าขั้นตอนปัจจุบันคือขั้นตอนที่ 3 หรือไม่
+  if (currentStep === 3) {
+    // ย้อนกลับไปยังขั้นตอนที่ 2
+    currentStep = 2;
+    updateStepContent();
+    resetPointSelection();
+  }
 });
+
+function updateStepContent() {
+  // ซ่อนขั้นตอนทั้งหมด
+  document
+    .querySelectorAll(".step")
+    .forEach((step) => step.classList.remove("active"));
+
+  // แสดงขั้นตอนที่ปัจจุบัน
+  document.getElementById(`step${currentStep}`).classList.add("active");
+}
+
+function resetPointSelection() {
+  // รีเซ็ตการเลือกในขั้นตอนที่ 3
+  document
+    .querySelectorAll(
+      "#pointsNumberButtons .number-btn, #pointsBounceButtons .number-btn"
+    )
+    .forEach((btn) => {
+      btn.classList.remove("selected");
+      btn.classList.remove("active");
+    });
+}
 
 document.getElementById("backButton2").addEventListener("click", () => {
   previousStep();

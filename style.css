@@ -1,125 +1,152 @@
+:root {
+    --primary-color: #f1c40f;
+    --background-color: #1c1c1c;
+    --button-hover-shadow: rgba(241, 196, 15, 0.8);
+    --button-active-shadow: rgba(241, 196, 15, 0.5);
+    --text-color: #ffffff;
+    --highlight-color: #FFD700;
+    --font-family: 'Courier New', Courier, monospace;
+    --font-size: 1rem;
+}
+
 body {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #1c1c1c;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
-    margin: 0; 
+    height: 100vh;
+    margin:0;
+    padding: 0;
+    border: 2px solid goldenrod;
+    box-sizing: border-box;
+    /* border-top: 8px  solid goldenrod;   */
+    width: 100vw;  /* Ensures the width is always 100% of the viewport */
+    height: 100vh; /* Ensures the height is always 100% of the viewport */
+    overflow: hidden; /* Prevents scrolling */
+    border-radius: 20px;
 }
+
+
 
 .container {
-    background-color: #1c1c1c;
-    padding: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 2rem;
     border-radius: 10px;
-    /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); */
     max-width: 700px;
-    width: 100%; 
-    color: white;
+    width: 90%;
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-}
-
-.step {
-    display: none; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    height: 100%; 
-}
-
-#pointsInput {
-    display: flex; 
     flex-direction: column;
     align-items: center;
-    width: 100%; 
-    margin-top: 20px;
-}
-
-.point-input {
-    margin: 5px; 
-    padding: 10px; 
-    border: 2px solid #f1c40f; 
-    border-radius: 5px; 
-    width: 80%; 
-    max-width: 300px; 
-}
-
-.number-btn.selected {
-    background-color: #f39c12; 
-    color: white; 
-}
-
-
-.swal2-title-custom {
-    font-family: 'Courier New', Courier, monospace;
-    color: #FFD700; 
-}
-
-.swal2-popup-custom {
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-}
-
-
-
-.step.active {
-    display: block;
-}
-
-h2 {
-    text-align: center;
-    color: #FFD700;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.btn-group {
-    display: flex; 
-    justify-content: center; 
-    margin: 50px;
-}
-
-.number-btn {
-    display: inline-block;
-    width: 150px; 
-    height: 120px;
-    margin: 5px; 
-    background-color: #ffffff;
-    color: black;
-    border: 2px solid #f1c40f;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px; 
-    line-height: 60px; 
+    color: var(--text-color);
+    box-sizing: border-box;
+    
+        overflow-x: hidden; /* Disable horizontal scrolling */
+        overflow-y: hidden; /* Disable vertical scrolling */
     
 }
 
-.number-btn:hover {
-    /* transform: translateY(-10px); */
-    box-shadow: 0px 4px 20px rgba(241, 196, 15, 0.8);
+.step {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
+
+.step.active {
+    display: flex;
+}
+
+#pointsInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.point-input {
+    margin: 0.5rem;
+    padding: 0.75rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.number-btn {
+    width: 100%; /* Full width */
+    max-width: 250px; /* Increased width for larger cards */
+    height: 350px; /* Increased height for a more prominent card look */
+    padding: 2rem; /* Increased padding for more spacing */
+    font-size: 1.75rem; /* Larger font size for better readability */
+    line-height: 1.6; /* Adjusted line height for better text alignment */
+    border: 2px solid var(--primary-color); /* Border for card effect */
+    border-radius: 20px; /* More rounded corners */
+    display: flex; /* Flexbox for centering text */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    background-color: #fff; /* Background color */
+    color: #000; /* Text color */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for a more pronounced card effect */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transitions */
+    font-weight: 900;
+    border: 8px solid rgb(255, 183, 0);
+    /* Apply no-wrap to specific elements */
+.no-wrap {
+    white-space: nowrap;
+  }
+  
+}
+
+/* .number-btn:hover {
+    box-shadow: 0px 8px 20px var(--button-hover-shadow);
+} */
 
 .number-btn:active {
-    transform: translateY(0);
-    box-shadow: 0px 2px 10px rgba(241, 196, 15, 0.5);
+    transform: scale(0.98); /* Slightly scale down when clicked */
+    box-shadow: 0px 3px 8px var(--button-active-shadow);
 }
 
+.number-btn.selected {
+    background-color: #f39c12;
+    color: var(--text-color);
+}
 
 .btn-container {
-    display: flex;
-    justify-content: space-between; 
-    width: 100%; 
+    display: flex; /* Flexbox for side-by-side columns */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    width: 100%; /* Full width */
+    gap: 2rem; /* Gap between columns */
+    margin-top: 20px; /* Margin from the top */
+    height: 500px; /* Fixed height for scrolling container */
+}
+
+.btn-group {
+    display: flex; /* Flexbox for buttons in group */
+    flex-wrap: wrap; /* Allow wrapping to handle overflow */
+    justify-content: center; /* Center align buttons */
+    width: 100%; /* Full width */
+    gap: 1rem; /* Space between buttons */
 }
 
 .btn-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    width: 45%; 
-    margin: 0 5rem;
+    flex: 1; /* Take equal space */
+    display: flex; /* Use flexbox to align items */
+    flex-direction: column; /* Align items in column for vertical scrolling */
+    gap: 1rem; /* Add space between items */
+    align-items: center; /* Center align items */
+    padding: 1rem; /* Padding inside columns */
+    max-width: 300px; /* Maximum width for better layout control */
+    box-sizing: border-box; /* Include padding and border in the element's width and height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 100%; /* Adjust height to fill available space */
 }
+
 .btn {
     padding: 10px 20px; 
     background-color: #FFD700; 
@@ -127,63 +154,183 @@ h2 {
     border: none; 
     border-radius: 5px;
     cursor: pointer; 
-    font-size: 16px; 
-    margin: 2rem;
+    font-size: 1rem; /* Default font size */
+    margin: 1rem; /* Space around buttons */
+    display: inline-flex; /* Align items within the button */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
 }
 
 .btn:disabled {
-    background-color: #b0c4de; 
+    background-color: #b0c4de;
 }
 
 .summary {
-    margin-top: 20px;
-    color: #FFD700;
+    margin-top: 1rem;
+    color: var(--highlight-color);
 }
 
+h2 {
+    text-align: center;
+    color: var(--highlight-color);
+    margin-bottom: 1rem; /* Margin below the header */
+    font-size: 3rem; /* Default font size */
+}
 
-@media (max-width: 768px) {
+.swal2-title-custom {
+    font-family: var(--font-family);
+    color: var(--highlight-color);
+}
+
+.swal2-popup-custom {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+#numLegs {
+    width: 100%; /* Full width of the container */
+    max-width: 300px; /* Maximum width to prevent it from getting too large */
+    padding: 0.75rem; /* Padding for better usability */
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 1rem; /* Adjust font size */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    h2 {
+        font-size: 3.5rem; /* Adjust font size for medium screens */
+    }
+    .container {
+        width: 100%;
+        height: auto;
+        overflow-x: hidden; /* Disable horizontal scrolling */
+        overflow-y: hidden; /* Disable vertical scrolling */
+    }
     .number-btn {
-        width: 80px; 
-        height: 70px;
-        font-size: 14px; 
-        line-height: 50px; 
-    }
-
-    .btn-group {
-        display: flex; 
-        justify-content: center; 
-        margin: 100px;
-        position: relative;
-    
-    }
-
-    #numLegs{
-        width: 200px;
-        height: 50px;
-        text-align: center;
-        font-size: larger;
+        max-width: 200px; /* Maintain large card size */
+        height: 300px; /* Maintain large card height */
+        font-size: 1.5rem; /* Maintain larger font size */
+        line-height: 1.6; /* Maintain line-height */
     }
 
     .btn {
-        padding: 20px 40px; 
-        background-color: #FFD700; 
-        color: black; 
-        border: none; 
-        border-radius: 5px;
-        cursor: pointer; 
-        font-size: 16px; 
-        margin: 2rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
 
-    #summary{
-        text-align: center;
-        font-size: larger;
+    .btn-container {
+        height: 400px; /* Adjust height for smaller screens */
     }
 
-    h2{
-        font-size: 25px;
+@media (max-width: 768px) {
+    body {
+        border-top: 8px  solid goldenrod;  
+        padding: 10px; /* Add some padding for mobile screens */
+        border-width: 1px; /* Thinner border on mobile devices */
     }
-
     
-    
+    h2 {
+        font-size: 2.5rem; /* Adjust font size for medium screens */
+    }
+    #numLegs {
+        max-width: 80%; /* Adjust the max-width on medium screens */
+    }
+    .container {
+        width: 100%;
+        height: auto;
+        overflow-x: hidden; /* Disable horizontal scrolling */
+        overflow-y: hidden; /* Disable vertical scrolling */
+    }
+    .number-btn {
+        max-width: 180px; /* Slightly smaller but still large */
+        height: 250px; /* Adjusted height */
+        font-size: 1.25rem; /* Smaller font size */
+    }
+
+    .btn-container {
+        height: 450px; /* Increased height for better display on mobile */
+    }
+
+    .btn-column {
+        width: 50%; /* Each column takes up half width */
+    }
+
+    .btn-group {
+        gap: 0.5rem; /* Reduce gap between buttons */
+    }
+
+    /* Show score on mobile */
+    .score-display {
+        display: block; /* Display score on mobile */
+        font-size: 1.25rem; /* Smaller font size */
+    }
 }
+
+@media (max-width: 500px) {
+    body {
+        
+     
+        overflow: hidden;
+        width: 95vw;  /* Ensures the width is always 100% of the viewport */
+        height:88vh;
+        margin: 0 auto;
+        border-width: 1px; /* Ensure the border is not too thick on small screens */
+        font-size: 14px; /* Smaller font size for smaller screens */
+    }
+    h2 {
+        font-size: 2.25rem; /* Adjust font size for small screens */
+    }
+    #numLegs {
+        max-width: 90%; /* Adjust the max-width on small screens */
+    }
+    .container {
+        width: 100%;
+        height: auto;
+        overflow-x: hidden; /* Disable horizontal scrolling */
+        overflow-y: hidden; /* Disable vertical scrolling */
+    }
+
+    .number-btn {
+        max-width: 150px; /* Further reduced width */
+        height: 200px; /* Further reduced height */
+        font-size: 1.5rem; /* Further reduced font size */
+        font-weight: 900;
+        
+
+    }
+
+
+
+
+    .btn {
+        padding:1rem 4rem;
+        font-size: 0.7rem;
+    }
+
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .btn-container {
+        height: 500px; /* Increased height for very small screens */
+    }
+}
+#numLegs{
+    width: 100%;
+    text-align: center;
+}
+.no-wrap {
+    white-space: nowrap;
+  }
+
+
+}
+
+
+
+
+
+
