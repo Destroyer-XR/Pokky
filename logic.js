@@ -54,13 +54,21 @@ function updateStep3Title() {
 }
 
 function updateNextButtonVisibility() {
-  document.querySelectorAll(".step-button").forEach((button) => {
-    button.style.display = "none";
-  });
-
   const nextButton = document.getElementById(`next${currentStep}`);
   if (nextButton) {
-    nextButton.style.display = "block";
+    const isStep2 = currentStep === 2;
+    const isStep3 = currentStep === 3;
+
+    let isButtonEnabled = false;
+
+    if (isStep2) {
+      isButtonEnabled = selectedButtons["step2"] !== undefined;
+    } else if (isStep3) {
+      isButtonEnabled =
+        selectedButtons[`step3_${currentLegIndex}`] !== undefined;
+    }
+
+    nextButton.style.display = isButtonEnabled ? "block" : "none";
   }
 }
 
@@ -212,3 +220,5 @@ document.getElementById("startOver").addEventListener("click", () => {
 
   updateNextButtonVisibility();
 });
+
+updateNextButtonVisibility();
