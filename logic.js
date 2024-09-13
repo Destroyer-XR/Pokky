@@ -1,35 +1,51 @@
-let currentStep = 1;
-let numLegs = 0;
+let currentStep = 2; // เริ่มต้นจาก step 2
+let numLegs = 6; // จำนวนขาเริ่มต้น
 let selectedButtons = {};
 let points = [];
 let currentLegIndex = 0;
 
 function nextStep() {
-  document.querySelector(`#step${currentStep}`).classList.remove("active");
-  currentStep++;
-  document.querySelector(`#step${currentStep}`).classList.add("active");
+  if (currentStep === 3) {
+    if (currentLegIndex < numLegs - 1) {
+      currentLegIndex++;
+      updateStep3Title();
+      resetPointSelection();
+    } else {
+      currentStep++;
+      document.querySelector(`#step${currentStep}`).classList.add("active");
+      document
+        .querySelector(`#step${currentStep - 1}`)
+        .classList.remove("active");
+
+      // แสดงสรุปหลังจากเสร็จสิ้นขั้นตอนทั้งหมด
+      displaySummary();
+    }
+  } else {
+    document.querySelector(`#step${currentStep}`).classList.remove("active");
+    currentStep++;
+    document.querySelector(`#step${currentStep}`).classList.add("active");
+
+    if (currentStep === 3) {
+      updateStep3Title();
+      resetPointSelection();
+    }
+  }
 
   updateNextButtonVisibility();
-
-  if (currentStep === 3) {
-    updateStep3Title();
-    resetPointSelection();
-  } else if (currentStep > 3) {
-    displaySummary();
-  }
 }
 
 function previousStep() {
-  document.querySelector(`#step${currentStep}`).classList.remove("active");
-  currentStep--;
-  document.querySelector(`#step${currentStep}`).classList.add("active");
-
-  updateNextButtonVisibility();
-
-  if (currentStep === 3) {
+  if (currentStep === 3 && currentLegIndex > 0) {
+    currentLegIndex--;
     updateStep3Title();
     resetPointSelection();
+  } else {
+    document.querySelector(`#step${currentStep}`).classList.remove("active");
+    currentStep--;
+    document.querySelector(`#step${currentStep}`).classList.add("active");
   }
+
+  updateNextButtonVisibility();
 }
 
 function updateStep3Title() {
@@ -48,25 +64,7 @@ function updateNextButtonVisibility() {
   }
 }
 
-document.getElementById("next1").addEventListener("click", () => {
-  numLegs = parseInt(document.getElementById("numLegs").value);
-  if (numLegs > 0) {
-    nextStep();
-  } else {
-    Swal.fire({
-      icon: "error",
-      color: "#FFD700",
-      background: "#1c1c1c",
-      iconColor: "#f39c12",
-      title: "Invalid Number",
-      buttonsStyling: true,
-      confirmButtonColor: "#FFD700",
-      cancelButtonColor: "#f1c40f",
-      text: "Please enter a valid number of legs!"
-    });
-  }
-});
-
+// สร้างปุ่มตัวเลขสำหรับ Step 2
 const numberButtons = document.getElementById("numberButtons");
 for (let i = 0; i <= 9; i++) {
   const btn = document.createElement("button");
@@ -78,13 +76,14 @@ for (let i = 0; i <= 9; i++) {
   numberButtons.appendChild(btn);
 }
 
+// สร้างปุ่ม "เด้ง" สำหรับ Step 2
 const bounceButtons = document.getElementById("bounceButtons");
 for (let i = 0; i <= 9; i++) {
   const btn = document.createElement("button");
-  btn.textContent = i + " เด้ง";
+  btn.textContent = `${i} เด้ง`;
   btn.classList.add("number-btn", "red");
   btn.addEventListener("click", () => {
-    selectStep2Button(btn, i + " เด้ง");
+    selectStep2Button(btn, `${i} เด้ง`);
   });
   bounceButtons.appendChild(btn);
 }
@@ -104,6 +103,7 @@ function selectStep2Button(button, value) {
   nextStep();
 }
 
+// สร้างปุ่มตัวเลขสำหรับ Step 3
 const pointsNumberButtons = document.getElementById("pointsNumberButtons");
 for (let i = 0; i <= 9; i++) {
   const btn = document.createElement("button");
@@ -115,13 +115,14 @@ for (let i = 0; i <= 9; i++) {
   pointsNumberButtons.appendChild(btn);
 }
 
+// สร้างปุ่ม "เด้ง" สำหรับ Step 3
 const pointsBounceButtons = document.getElementById("pointsBounceButtons");
 for (let i = 0; i <= 9; i++) {
   const btn = document.createElement("button");
-  btn.textContent = i + " เด้ง";
+  btn.textContent = `${i} เด้ง`;
   btn.classList.add("number-btn", "red");
   btn.addEventListener("click", () => {
-    selectStep3Button(btn, i + " เด้ง");
+    selectStep3Button(btn, `${i} เด้ง`);
   });
   pointsBounceButtons.appendChild(btn);
 }
@@ -172,88 +173,48 @@ function resetPointSelection() {
 
 function displaySummary() {
   const summary = document.getElementById("summary");
+
+  // ทำให้แน่ใจว่าคอนเทนเนอร์ของสรุปผลมองเห็น
+  summary.style.display = "block";
+
   summary.innerHTML = `<p>เจ้า ${
     selectedButtons["step2"] ? selectedButtons["step2"].textContent : ""
-  } แต้ม</p>`;
+  } แต้ม:</p>`;
+
   points.forEach((point, index) => {
-    summary.innerHTML += `<p>ขา ${index + 1}: ${point} แต้ม</p>`;
+    summary.innerHTML += `<p>ขาที่ ${index + 1}: ${point}</p>`;
   });
 }
-document.getElementById("backButton3").addEventListener("click", () => {
-  // ตรวจสอบว่าขั้นตอนปัจจุบันคือขั้นตอนที่ 3 หรือไม่
-  if (currentStep === 3) {
-    // ย้อนกลับไปยังขั้นตอนที่ 2
-    currentStep = 2;
-    updateStepContent();
-    resetPointSelection();
-  }
-});
 
-function updateStepContent() {
-  // ซ่อนขั้นตอนทั้งหมด
-  document
-    .querySelectorAll(".step")
-    .forEach((step) => step.classList.remove("active"));
+document.getElementById("backButton2").addEventListener("click", previousStep);
+document.getElementById("backButton3").addEventListener("click", previousStep);
 
-  // แสดงขั้นตอนที่ปัจจุบัน
-  document.getElementById(`step${currentStep}`).classList.add("active");
-}
-
-function resetPointSelection() {
-  // รีเซ็ตการเลือกในขั้นตอนที่ 3
-  document
-    .querySelectorAll(
-      "#pointsNumberButtons .number-btn, #pointsBounceButtons .number-btn"
-    )
-    .forEach((btn) => {
-      btn.classList.remove("selected");
-      btn.classList.remove("active");
-    });
-}
-
-document.getElementById("backButton2").addEventListener("click", () => {
-  previousStep();
-  resetSelection();
-  updateNextButtonVisibility();
-});
-
-function resetSelection() {
-  document
-    .querySelectorAll("#numberButtons .number-btn, #bounceButtons .number-btn")
-    .forEach((btn) => {
-      if (
-        selectedButtons["step2"] &&
-        btn.textContent === selectedButtons["step2"].textContent
-      ) {
-        btn.classList.add("selected");
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("selected");
-        btn.classList.remove("active");
-      }
-    });
-}
-
+// ปรับปรุงปุ่ม Start Over
 document.getElementById("startOver").addEventListener("click", () => {
-  currentStep = 1;
-  currentLegIndex = 0;
+  currentStep = 2; // ตั้งค่าเป็น step 2
+  selectedButtons = {}; // ล้างปุ่มที่เลือก
+  points = []; // ล้างคะแนน
+  currentLegIndex = 0; // รีเซ็ตดัชนีขา
 
-  document.getElementById("numLegs").value = "";
+  // ซ่อนทุกขั้นตอนและแสดง step 2
+  document.querySelectorAll(".step").forEach((step) => {
+    step.classList.remove("active");
+  });
+  document.querySelector("#step2").classList.add("active");
 
-  selectedButtons = {};
-  document.querySelectorAll(".number-btn").forEach((btn) => {
-    btn.classList.remove("selected");
-    btn.classList.remove("active");
+  // ล้างปุ่มที่เลือกใน Step 2 และ Step 3
+  document.querySelectorAll(".number-btn.selected").forEach((button) => {
+    button.classList.remove("selected");
+    button.classList.remove("active");
   });
 
-  points = [];
-
-  document
-    .querySelectorAll(".step")
-    .forEach((step) => step.classList.remove("active"));
-  document.querySelector("#step1").classList.add("active");
-
+  // รีเซ็ตเนื้อหาสรุป
   document.getElementById("summary").innerHTML = "";
+
+  // รีเซ็ตค่าของ input number หากต้องการ
+  document.querySelectorAll('input[type="number"]').forEach((input) => {
+    input.value = ""; // รีเซ็ตเป็นค่าเริ่มต้นหรือค่าเริ่มต้นที่กำหนด
+  });
 
   updateNextButtonVisibility();
 });
