@@ -174,7 +174,6 @@ function resetPointSelection() {
 function displaySummary() {
   const summary = document.getElementById("summary");
 
-  // ทำให้แน่ใจว่าคอนเทนเนอร์ของสรุปผลมองเห็น
   summary.style.display = "block";
 
   summary.innerHTML = `<p>เจ้า ${
@@ -189,31 +188,26 @@ function displaySummary() {
 document.getElementById("backButton2").addEventListener("click", previousStep);
 document.getElementById("backButton3").addEventListener("click", previousStep);
 
-// ปรับปรุงปุ่ม Start Over
 document.getElementById("startOver").addEventListener("click", () => {
-  currentStep = 2; // ตั้งค่าเป็น step 2
-  selectedButtons = {}; // ล้างปุ่มที่เลือก
-  points = []; // ล้างคะแนน
-  currentLegIndex = 0; // รีเซ็ตดัชนีขา
+  currentStep = 2;
+  selectedButtons = {};
+  points = [];
+  currentLegIndex = 0;
 
-  // ซ่อนทุกขั้นตอนและแสดง step 2
   document.querySelectorAll(".step").forEach((step) => {
     step.classList.remove("active");
   });
   document.querySelector("#step2").classList.add("active");
 
-  // ล้างปุ่มที่เลือกใน Step 2 และ Step 3
   document.querySelectorAll(".number-btn.selected").forEach((button) => {
     button.classList.remove("selected");
     button.classList.remove("active");
   });
 
-  // รีเซ็ตเนื้อหาสรุป
   document.getElementById("summary").innerHTML = "";
 
-  // รีเซ็ตค่าของ input number หากต้องการ
   document.querySelectorAll('input[type="number"]').forEach((input) => {
-    input.value = ""; // รีเซ็ตเป็นค่าเริ่มต้นหรือค่าเริ่มต้นที่กำหนด
+    input.value = "";
   });
 
   updateNextButtonVisibility();
