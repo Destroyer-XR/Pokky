@@ -4,70 +4,69 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 205px;
-   padding: 0;
-   box-sizing: border-box;
+    min-height: 100vh; /* เปลี่ยนเป็น min-height เพื่อให้ครอบคลุมความสูงของหน้าจอทั้งหมด */
+    margin: 0; /* ลบ margin-top ออก */
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
-    position: fixed;
-   margin-top: 28rem;
+    position: relative; /* เปลี่ยนจาก fixed เป็น relative */
+    margin: 0; /* ลบ margin-top ออก */
     padding: 20px;
     border-radius: 10px;
-    /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); */
     max-width: 700px;
-    width: 100%; 
+    width: 100%;
     color: white;
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;
+    align-items: center;
+/* เปิดใช้งาน box-shadow */
 }
 
 .step {
-    display: none; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    height: 100%; 
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* ทำให้ step ครอบคลุมความกว้างทั้งหมด */
+    text-align: center; /* เพิ่มการจัดตำแหน่งข้อความให้ตรงกลาง */
+}
+
+.step.active {
+    display: flex; /* ใช้ flex แทน block */
 }
 
 #pointsInput {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%; 
+    width: 100%;
     margin-top: 20px;
 }
 
 .point-input {
-    margin: 5px; 
-    padding: 10px; 
-    border: 2px solid #f1c40f; 
-    border-radius: 5px; 
-    width: 80%; 
-    max-width: 300px; 
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid #f1c40f;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
 }
 
 .number-btn.selected {
-    background-color: #f39c12; 
-    color: white; 
+    background-color: #f39c12;
+    color: white;
 }
-
 
 .swal2-title-custom {
     font-family: 'Courier New', Courier, monospace;
-    color: #FFD700; 
+    color: #FFD700;
 }
 
 .swal2-popup-custom {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-}
-
-
-
-.step.active {
-    display: block;
 }
 
 h2 {
@@ -76,73 +75,64 @@ h2 {
     margin-bottom: 20px;
     font-size: 24px;
 }
+
 .h22 {
     text-align: center;
     color: #FFD700;
-    /* margin-bottom: 400px; */
     font-size: 24px;
 }
 
 .btn-group {
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     margin: 50px;
 }
 
 .number-btn {
     display: inline-block;
-    width: 150px; 
+    width: 150px;
     height: 120px;
-    margin: 1px; 
+    margin: 1px;
     background-color: #ffffff;
     color: black;
     border: 2px solid #f1c40f;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 16px; 
-  
-
+    font-size: 16px;
 }
-
-/* .number-btn:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 4px 20px rgba(241, 196, 15, 0.8);
-} */
 
 .number-btn:active {
     transform: translateY(0);
     box-shadow: 0px 2px 10px rgba(241, 196, 15, 0.5);
 }
 
-
 .btn-container {
     display: flex;
-    justify-content: space-between; 
-    width: 100%; 
+    justify-content: space-between;
+    width: 100%;
 }
 
 .btn-column {
- 
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    width: 45%; 
-    margin: 0 ;
-   
+    align-items: center;
+    width: 45%;
+    margin: 0;
 }
+
 .btn {
-    padding: 5px 10px; 
-    background-color: #FFD700; 
-    color: black; 
-    border: none; 
+    padding: 5px 10px;
+    background-color: #FFD700;
+    color: black;
+    border: none;
     border-radius: 5px;
-    cursor: pointer; 
-    font-size: 16px; 
-    margin: 2rem;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 2rem 1rem; 
 }
 
 .btn:disabled {
-    background-color: #b0c4de; 
+    background-color: #b0c4de;
 }
 
 .summary {
@@ -150,52 +140,45 @@ h2 {
     color: #FFD700;
 }
 
-
 @media (max-width: 430px) {
     .number-btn {
-        width: 60px; 
-        height: 65px;
-        font-size: 14px; 
+        width: 80px;
+        height: 50px;
+        font-size: 14px;
         line-height: 50px;
-        
     }
 
     .btn-group {
-        display: flex; 
-        justify-content: center; 
-        margin: auto ;
-      
-
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0; /* ลด margin เพื่อความสะดวกในหน้าจอขนาดเล็ก */
     }
 
-    #numLegs{
-        width: 200px;
+    #numLegs {
+        width: 100%; /* ปรับให้เต็มความกว้าง */
         height: 50px;
         text-align: center;
-        font-size: larger;
+        font-size: 1rem; /* ปรับขนาดฟอนต์ */
     }
 
     .btn {
-        padding: 10px 20px; 
-        background-color: #FFD700; 
-        color: black; 
-        border: none; 
+        padding: 10px 20px;
+        background-color: #FFD700;
+        color: black;
+        border: none;
         border-radius: 5px;
-        cursor: pointer; 
-        font-size: 10px; 
+        cursor: pointer;
+        font-size: 12px;
         font-weight: 500;
-        margin: 2rem;
+        margin: 1rem; /* เพิ่มระยะห่างรอบๆ ปุ่ม */
     }
 
-    #summary{
+    #summary {
         text-align: center;
-        font-size: larger;
+        font-size: 1rem; /* ปรับขนาดฟอนต์ */
     }
 
-    h2{
-        font-size: 18px;
+    h2 {
+        font-size: 1.5rem; /* ปรับขนาดฟอนต์ */
     }
-
-
-
 }
