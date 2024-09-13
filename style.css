@@ -21,10 +21,10 @@ body {
     padding: 0;
     border: 2px solid goldenrod;
     box-sizing: border-box;
-    /* border-top: 8px  solid goldenrod;   */
-    width: 100vw;  /* Ensures the width is always 100% of the viewport */
-    height: 100vh; /* Ensures the height is always 100% of the viewport */
-    overflow: hidden; /* Prevents scrolling */
+   
+    width: 100vw;  
+    height: 100vh; 
+    overflow: hidden; 
     border-radius: 20px;
 }
 
@@ -42,8 +42,8 @@ body {
     color: var(--text-color);
     box-sizing: border-box;
     
-        overflow-x: hidden; /* Disable horizontal scrolling */
-        overflow-y: hidden; /* Disable vertical scrolling */
+        overflow-x: hidden; 
+        overflow-y: hidden; 
     
 }
 
@@ -79,36 +79,33 @@ body {
 }
 
 .number-btn {
-    width: 100%; /* Full width */
-    max-width: 250px; /* Increased width for larger cards */
-    height: 350px; /* Increased height for a more prominent card look */
-    padding: 2rem; /* Increased padding for more spacing */
-    font-size: 1.75rem; /* Larger font size for better readability */
-    line-height: 1.6; /* Adjusted line height for better text alignment */
-    border: 2px solid var(--primary-color); /* Border for card effect */
-    border-radius: 20px; /* More rounded corners */
-    display: flex; /* Flexbox for centering text */
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
-    background-color: #fff; /* Background color */
-    color: #000; /* Text color */
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for a more pronounced card effect */
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transitions */
+    width: 100%; 
+    max-width: 250px; 
+    height: 350px; 
+    padding: 2rem; 
+    font-size: 1.75rem; 
+    line-height: 1.6; 
+    border: 2px solid var(--primary-color); 
+    border-radius: 20px; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    background-color: #fff; 
+    color: #000;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.2s, box-shadow 0.2s; 
     font-weight: 900;
     border: 8px solid rgb(255, 183, 0);
-    /* Apply no-wrap to specific elements */
+  
 .no-wrap {
     white-space: nowrap;
   }
   
 }
 
-/* .number-btn:hover {
-    box-shadow: 0px 8px 20px var(--button-hover-shadow);
-} */
 
 .number-btn:active {
-    transform: scale(0.98); /* Slightly scale down when clicked */
+    transform: scale(0.98); 
     box-shadow: 0px 3px 8px var(--button-active-shadow);
 }
 
@@ -118,33 +115,33 @@ body {
 }
 
 .btn-container {
-    display: flex; /* Flexbox for side-by-side columns */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    width: 100%; /* Full width */
-    gap: 2rem; /* Gap between columns */
-    margin-top: 20px; /* Margin from the top */
-    height: 500px; /* Fixed height for scrolling container */
+    display: flex; 
+    overflow-x: auto; 
+    width: 100%; 
+    gap: 2rem; 
+    margin-top: 20px; 
+    height: 500px; 
 }
 
 .btn-group {
-    display: flex; /* Flexbox for buttons in group */
-    flex-wrap: wrap; /* Allow wrapping to handle overflow */
-    justify-content: center; /* Center align buttons */
-    width: 100%; /* Full width */
-    gap: 1rem; /* Space between buttons */
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    width: 100%; 
+    gap: 1rem; 
 }
 
 .btn-column {
-    flex: 1; /* Take equal space */
-    display: flex; /* Use flexbox to align items */
-    flex-direction: column; /* Align items in column for vertical scrolling */
-    gap: 1rem; /* Add space between items */
-    align-items: center; /* Center align items */
-    padding: 1rem; /* Padding inside columns */
-    max-width: 300px; /* Maximum width for better layout control */
-    box-sizing: border-box; /* Include padding and border in the element's width and height */
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 100%; /* Adjust height to fill available space */
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1rem;
+    align-items: center; 
+    padding: 1rem; 
+    max-width: 300px;
+    box-sizing: border-box; 
+    overflow-y: auto; 
+    max-height: 100%; 
 }
 
 .btn {
@@ -154,11 +151,11 @@ body {
     border: none; 
     border-radius: 5px;
     cursor: pointer; 
-    font-size: 1rem; /* Default font size */
-    margin: 1rem; /* Space around buttons */
-    display: inline-flex; /* Align items within the button */
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
+    font-size: 1rem; 
+    margin: 1rem; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
 }
 
 .btn:disabled {
@@ -173,8 +170,8 @@ body {
 h2 {
     text-align: center;
     color: var(--highlight-color);
-    margin-bottom: 1rem; /* Margin below the header */
-    font-size: 3rem; /* Default font size */
+    margin-bottom: 1rem;
+    font-size: 3rem; 
 }
 
 .swal2-title-custom {
@@ -188,31 +185,31 @@ h2 {
 }
 
 #numLegs {
-    width: 100%; /* Full width of the container */
-    max-width: 300px; /* Maximum width to prevent it from getting too large */
-    padding: 0.75rem; /* Padding for better usability */
+    width: 100%;
+    max-width: 300px; 
+    padding: 0.75rem; 
     border: 2px solid var(--primary-color);
     border-radius: 5px;
-    font-size: 1rem; /* Adjust font size */
-    box-sizing: border-box; /* Include padding and border in width */
+    font-size: 1rem; 
+    box-sizing: border-box; 
 }
 
-/* Media Queries for Responsiveness */
+
 @media (max-width: 1024px) {
     h2 {
-        font-size: 3.5rem; /* Adjust font size for medium screens */
+        font-size: 3.5rem;
     }
     .container {
         width: 100%;
         height: auto;
-        overflow-x: hidden; /* Disable horizontal scrolling */
-        overflow-y: hidden; /* Disable vertical scrolling */
+        overflow-x: hidden; 
+        overflow-y: hidden; 
     }
     .number-btn {
-        max-width: 200px; /* Maintain large card size */
-        height: 300px; /* Maintain large card height */
-        font-size: 1.5rem; /* Maintain larger font size */
-        line-height: 1.6; /* Maintain line-height */
+        max-width: 200px; 
+        height: 300px; 
+        font-size: 1.5rem; 
+        line-height: 1.6; 
     }
 
     .btn {
@@ -221,50 +218,50 @@ h2 {
     }
 
     .btn-container {
-        height: 400px; /* Adjust height for smaller screens */
+        height: 400px; 
     }
 
 @media (max-width: 768px) {
     body {
         border-top: 8px  solid goldenrod;  
-        padding: 10px; /* Add some padding for mobile screens */
-        border-width: 1px; /* Thinner border on mobile devices */
+        padding: 10px; 
+        border-width: 1px; 
     }
     
     h2 {
-        font-size: 2.5rem; /* Adjust font size for medium screens */
+        font-size: 2.5rem; 
     }
     #numLegs {
-        max-width: 80%; /* Adjust the max-width on medium screens */
+        max-width: 80%; 
     }
     .container {
         width: 100%;
         height: auto;
-        overflow-x: hidden; /* Disable horizontal scrolling */
-        overflow-y: hidden; /* Disable vertical scrolling */
+        overflow-x: hidden;
+        overflow-y: hidden; 
     }
     .number-btn {
-        max-width: 180px; /* Slightly smaller but still large */
-        height: 250px; /* Adjusted height */
-        font-size: 1.25rem; /* Smaller font size */
+        max-width: 180px; 
+        height: 250px; 
+        font-size: 1.25rem; 
     }
 
     .btn-container {
-        height: 450px; /* Increased height for better display on mobile */
+        height: 450px; 
     }
 
     .btn-column {
-        width: 50%; /* Each column takes up half width */
+        width: 50%; 
     }
 
     .btn-group {
-        gap: 0.5rem; /* Reduce gap between buttons */
+        gap: 0.5rem; 
     }
 
-    /* Show score on mobile */
+   
     .score-display {
-        display: block; /* Display score on mobile */
-        font-size: 1.25rem; /* Smaller font size */
+        display: block; 
+        font-size: 1.25rem; 
     }
 }
 
@@ -273,29 +270,29 @@ h2 {
         
      
         overflow: hidden;
-        width: 95vw;  /* Ensures the width is always 100% of the viewport */
+        width: 95vw; 
         height:88vh;
         margin: 0 auto;
-        border-width: 1px; /* Ensure the border is not too thick on small screens */
-        font-size: 14px; /* Smaller font size for smaller screens */
+        border-width: 1px;
+        font-size: 14px; 
     }
     h2 {
-        font-size: 2.25rem; /* Adjust font size for small screens */
+        font-size: 2.25rem; 
     }
     #numLegs {
-        max-width: 90%; /* Adjust the max-width on small screens */
+        max-width: 90%; 
     }
     .container {
         width: 100%;
         height: auto;
-        overflow-x: hidden; /* Disable horizontal scrolling */
-        overflow-y: hidden; /* Disable vertical scrolling */
+        overflow-x: hidden; 
+        overflow-y: hidden; /
     }
 
     .number-btn {
-        max-width: 150px; /* Further reduced width */
-        height: 200px; /* Further reduced height */
-        font-size: 1.5rem; /* Further reduced font size */
+        max-width: 150px; 
+        height: 200px; 
+        font-size: 1.5rem; 
         font-weight: 900;
         
 
@@ -315,7 +312,7 @@ h2 {
     }
 
     .btn-container {
-        height: 500px; /* Increased height for very small screens */
+        height: 500px;
     }
 }
 #numLegs{
