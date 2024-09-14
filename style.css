@@ -94,12 +94,14 @@ h2 {
     width: 150px;
     height: 120px;
     margin: 1px;
-    background-color: #ffffff;
+    background-color:whitesmoke;
     color: black;
-    border: 2px solid #f1c40f;
+    border: 2px solid #FFD700;
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), /* เงาของปุ่ม */
+                inset 0 -3px 6px rgba(255, 255, 255, 0.6); /* เงาภายในเพื่อเพิ่มเอฟเฟกต์มันวาว */
 }
 
 .number-btn:active {
@@ -123,13 +125,16 @@ h2 {
 
 .btn {
     padding: 5px 10px;
-    background-color: #FFD700;
+    background: linear-gradient(145deg, #f7e02b, #ffd700); /* เอฟเฟกต์มันวาว */
     color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin: 2rem 1rem; 
+    margin: 2rem 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), /* เงาของปุ่ม */
+                inset 0 -3px 6px rgba(255, 255, 255, 0.6); /* เงาภายในเพื่อเพิ่มเอฟเฟกต์มันวาว */
+    transition: all 0.3s ease; /* ทำให้การเปลี่ยนแปลงของปุ่มราบรื่น */
 }
 
 .btn:disabled {

@@ -5,7 +5,8 @@ let points = [];
 let currentLegIndex = 0;
 
 const liffId = "2006065768-no9MYKVg";
-liff.init({ liffId: liffId })
+liff
+  .init({ liffId: liffId })
   .then(() => {
     if (!liff.isLoggedIn()) {
       liff.login();
@@ -253,7 +254,6 @@ document.getElementById("backButton3").addEventListener("click", previousStep);
 document.getElementById("backButton4").addEventListener("click", previousStep);
 
 document.getElementById("startOver").addEventListener("click", () => {
-
   let text = "";
   if (selectedButtons && selectedButtons["step2"]) {
     const selectedButtons_owne =
@@ -282,7 +282,7 @@ document.getElementById("startOver").addEventListener("click", () => {
       }
     });
   }
-  
+
   if (text !== "") {
     liff
       .shareTargetPicker(
@@ -340,7 +340,7 @@ document.getElementById("startOver").addEventListener("click", () => {
         });
       });
   }
-  
+
   currentStep = 2;
   selectedButtons = {};
   points = [];
