@@ -4,6 +4,18 @@ let selectedButtons = {};
 let points = [];
 let currentLegIndex = 0;
 
+const liffId = "2006065768-no9MYKVg";
+liff
+  .init({ liffId: liffId })
+  .then(() => {
+    if (!liff.isLoggedIn()) {
+      liff.login();
+    }
+  })
+  .catch((err) => {
+    console.log(err.code, err.message);
+  });
+
 function nextStep() {
   if (currentStep === 3) {
     if (currentLegIndex < numLegs - 1) {
@@ -235,6 +247,94 @@ function displaySummary() {
   points.forEach((point, index) => {
     summary.innerHTML += `<p>ขาที่ ${index + 1}: ${point}</p>`;
   });
+
+  let text = "";
+  if (selectedButtons && selectedButtons["step2"]) {
+    const selectedButtons_owne =
+      selectedButtons["step2"].value ||
+      selectedButtons["step2"].textContent ||
+      String(selectedButtons["step2"]);
+
+    // ใช้ trim() แทน strip()
+    if (selectedButtons_owne.includes("เด้ง")) {
+      text += "S2" + selectedButtons_owne.replace("เด้ง", "").trim();
+    } else {
+      text += "S1" + selectedButtons_owne;
+    }
+  }
+
+  // ตรวจสอบว่ามีข้อมูลใน points
+  if (Array.isArray(points)) {
+    points.forEach((point) => {
+      const pointStr = point.value || point.textContent || String(point);
+
+      if (pointStr.includes("เด้ง")) {
+        // ใช้ trim() แทน strip()
+        text += ",2" + pointStr.replace("เด้ง", "").trim();
+      } else {
+        text += ",1" + pointStr;
+      }
+    });
+  }
+
+  // ตรวจสอบว่า liff ถูกโหลดเรียบร้อยแล้วก่อนเรียกใช้
+  if (text !== "" && liff) {
+    liff
+      .shareTargetPicker(
+        [
+          {
+            type: "text",
+            text: text,
+          },
+        ],
+        {
+          isMultiple: true,
+        }
+      )
+      .then(function (res) {
+        if (res) {
+          // สำเร็จในการส่งข้อความผ่าน TargetPicker
+          Swal.fire({
+            icon: 'success',
+            title: 'Message Sent!',
+            text: 'The message was successfully sent via TargetPicker.',
+            confirmButtonText: 'OK',
+            buttonsStyling: true,
+            color: "#FFD700",
+            confirmButtonColor: "#FFD700",
+             cancelButtonColor: "#f1c40f",
+          });
+          console.log(`[${res.status}] Message sent!`);
+        } else {
+          // ผู้ใช้ปิด TargetPicker
+          console.log("TargetPicker was closed!");
+          Swal.fire({
+            icon: 'info',
+            title: 'TargetPicker Closed',
+            text: 'The TargetPicker was closed by the user.',
+            confirmButtonText: 'OK',
+            buttonsStyling: true,
+            color: "#FFD700",
+            confirmButtonColor: "#FFD700",
+             cancelButtonColor: "#f1c40f",
+          });
+        }
+      })
+      .catch(function (error) {
+        // เกิดข้อผิดพลาดก่อนส่งข้อความ
+        console.log("something wrong happen", error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Something went wrong while sending the message.',
+          confirmButtonText: 'OK',
+          buttonsStyling: true,
+          color: "#FFD700",
+          confirmButtonColor: "#FFD700",
+           cancelButtonColor: "#f1c40f",
+        });
+      });
+  }
 }
 
 document.getElementById("backButton2").addEventListener("click", previousStep);
