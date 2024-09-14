@@ -284,39 +284,39 @@ function displaySummary() {
         [
           {
             type: "text",
-            text: text,
-          },
+            text: text
+          }
         ],
         {
-          isMultiple: true,
+          isMultiple: true
         }
       )
       .then(function (res) {
         if (res) {
           // สำเร็จในการส่งข้อความผ่าน TargetPicker
           Swal.fire({
-            icon: 'success',
-            title: 'Message Sent!',
-            text: 'The message was successfully sent via TargetPicker.',
-            confirmButtonText: 'OK',
+            icon: "success",
+            title: "Message Sent!",
+            text: "The message was successfully sent via TargetPicker.",
+            confirmButtonText: "OK",
             buttonsStyling: true,
             color: "#FFD700",
             confirmButtonColor: "#FFD700",
-             cancelButtonColor: "#f1c40f",
+            cancelButtonColor: "#f1c40f"
           });
           console.log(`[${res.status}] Message sent!`);
         } else {
           // ผู้ใช้ปิด TargetPicker
           console.log("TargetPicker was closed!");
           Swal.fire({
-            icon: 'info',
-            title: 'TargetPicker Closed',
-            text: 'The TargetPicker was closed by the user.',
-            confirmButtonText: 'OK',
+            icon: "info",
+            title: "TargetPicker Closed",
+            text: "The TargetPicker was closed by the user.",
+            confirmButtonText: "OK",
             buttonsStyling: true,
             color: "#FFD700",
             confirmButtonColor: "#FFD700",
-             cancelButtonColor: "#f1c40f",
+            cancelButtonColor: "#f1c40f"
           });
         }
       })
@@ -324,14 +324,14 @@ function displaySummary() {
         // เกิดข้อผิดพลาดก่อนส่งข้อความ
         console.log("something wrong happen", error);
         Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Something went wrong while sending the message.',
-          confirmButtonText: 'OK',
+          icon: "error",
+          title: "Error",
+          text: "Something went wrong while sending the message.",
+          confirmButtonText: "OK",
           buttonsStyling: true,
           color: "#FFD700",
           confirmButtonColor: "#FFD700",
-           cancelButtonColor: "#f1c40f",
+          cancelButtonColor: "#f1c40f"
         });
       });
   }
@@ -339,6 +339,7 @@ function displaySummary() {
 
 document.getElementById("backButton2").addEventListener("click", previousStep);
 document.getElementById("backButton3").addEventListener("click", previousStep);
+document.getElementById("backButton4").addEventListener("click", previousStep);
 
 document.getElementById("startOver").addEventListener("click", () => {
   currentStep = 2;
