@@ -5,8 +5,7 @@ let points = [];
 let currentLegIndex = 0;
 
 const liffId = "2006065768-no9MYKVg";
-liff
-  .init({ liffId: liffId })
+liff.init({ liffId: liffId })
   .then(() => {
     if (!liff.isLoggedIn()) {
       liff.login();
@@ -247,6 +246,13 @@ function displaySummary() {
   points.forEach((point, index) => {
     summary.innerHTML += `<p>ขาที่ ${index + 1}: ${point}</p>`;
   });
+}
+
+document.getElementById("backButton2").addEventListener("click", previousStep);
+document.getElementById("backButton3").addEventListener("click", previousStep);
+document.getElementById("backButton4").addEventListener("click", previousStep);
+
+document.getElementById("startOver").addEventListener("click", () => {
 
   let text = "";
   if (selectedButtons && selectedButtons["step2"]) {
@@ -276,9 +282,8 @@ function displaySummary() {
       }
     });
   }
-
-  // ตรวจสอบว่า liff ถูกโหลดเรียบร้อยแล้วก่อนเรียกใช้
-  if (text !== "" && liff) {
+  
+  if (text !== "") {
     liff
       .shareTargetPicker(
         [
@@ -335,13 +340,7 @@ function displaySummary() {
         });
       });
   }
-}
-
-document.getElementById("backButton2").addEventListener("click", previousStep);
-document.getElementById("backButton3").addEventListener("click", previousStep);
-document.getElementById("backButton4").addEventListener("click", previousStep);
-
-document.getElementById("startOver").addEventListener("click", () => {
+  
   currentStep = 2;
   selectedButtons = {};
   points = [];
@@ -356,7 +355,6 @@ document.getElementById("startOver").addEventListener("click", () => {
     button.classList.remove("selected");
     button.classList.remove("active");
   });
-
   document.getElementById("summary").style.display = "none";
   updateNextButtonVisibility();
 });
