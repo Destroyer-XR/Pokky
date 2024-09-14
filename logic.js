@@ -82,6 +82,17 @@ for (let i = 0; i <= 9; i++) {
     selectStep2Button(btn, i);
   });
   numberButtons.appendChild(btn);
+
+  // เพิ่มปุ่ม 7.5 หลังจากปุ่ม 7
+  if (i === 7) {
+    const btn75 = document.createElement("button");
+    btn75.textContent = "7.5";
+    btn75.classList.add("number-btn");
+    btn75.addEventListener("click", () => {
+      selectStep2Button(btn75, "7.5");
+    });
+    numberButtons.appendChild(btn75);
+  }
 }
 
 // สร้างปุ่ม "เด้ง" สำหรับ Step 2
@@ -94,6 +105,17 @@ for (let i = 0; i <= 9; i++) {
     selectStep2Button(btn, `${i} เด้ง`);
   });
   bounceButtons.appendChild(btn);
+
+  // เพิ่มปุ่ม 7.5 เด้งหลังจากปุ่ม 7 เด้ง
+  if (i === 7) {
+    const btn75Bounce = document.createElement("button");
+    btn75Bounce.textContent = "7.5 เด้ง";
+    btn75Bounce.classList.add("number-btn", "red");
+    btn75Bounce.addEventListener("click", () => {
+      selectStep2Button(btn75Bounce, "7.5 เด้ง");
+    });
+    bounceButtons.appendChild(btn75Bounce);
+  }
 }
 
 function selectStep2Button(button, value) {
@@ -121,6 +143,17 @@ for (let i = 0; i <= 9; i++) {
     selectStep3Button(btn, i);
   });
   pointsNumberButtons.appendChild(btn);
+
+  // เพิ่มปุ่ม 7.5 หลังจากปุ่ม 7
+  if (i === 7) {
+    const btn75Step3 = document.createElement("button");
+    btn75Step3.textContent = "7.5";
+    btn75Step3.classList.add("number-btn");
+    btn75Step3.addEventListener("click", () => {
+      selectStep3Button(btn75Step3, "7.5");
+    });
+    pointsNumberButtons.appendChild(btn75Step3);
+  }
 }
 
 // สร้างปุ่ม "เด้ง" สำหรับ Step 3
@@ -133,6 +166,17 @@ for (let i = 0; i <= 9; i++) {
     selectStep3Button(btn, `${i} เด้ง`);
   });
   pointsBounceButtons.appendChild(btn);
+
+  // เพิ่มปุ่ม 7.5 เด้งหลังจากปุ่ม 7 เด้ง
+  if (i === 7) {
+    const btn75BounceStep3 = document.createElement("button");
+    btn75BounceStep3.textContent = "7.5 เด้ง";
+    btn75BounceStep3.classList.add("number-btn", "red");
+    btn75BounceStep3.addEventListener("click", () => {
+      selectStep3Button(btn75BounceStep3, "7.5 เด้ง");
+    });
+    pointsBounceButtons.appendChild(btn75BounceStep3);
+  }
 }
 
 function selectStep3Button(button, value) {
@@ -212,12 +256,7 @@ document.getElementById("startOver").addEventListener("click", () => {
     button.classList.remove("active");
   });
 
-  document.getElementById("summary").innerHTML = "";
-
-  document.querySelectorAll('input[type="number"]').forEach((input) => {
-    input.value = "";
-  });
-
+  document.getElementById("summary").style.display = "none";
   updateNextButtonVisibility();
 });
 
