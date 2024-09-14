@@ -253,23 +253,6 @@ document.getElementById("backButton3").addEventListener("click", previousStep);
 document.getElementById("backButton4").addEventListener("click", previousStep);
 
 document.getElementById("startOver").addEventListener("click", () => {
-  currentStep = 2;
-  selectedButtons = {};
-  points = [];
-  currentLegIndex = 0;
-
-  document.querySelectorAll(".step").forEach((step) => {
-    step.classList.remove("active");
-  });
-  document.querySelector("#step2").classList.add("active");
-
-  document.querySelectorAll(".number-btn.selected").forEach((button) => {
-    button.classList.remove("selected");
-    button.classList.remove("active");
-  });
-
-  document.getElementById("summary").style.display = "none";
-  updateNextButtonVisibility();
 
   let text = "";
   if (selectedButtons && selectedButtons["step2"]) {
@@ -357,6 +340,23 @@ document.getElementById("startOver").addEventListener("click", () => {
         });
       });
   }
+  
+  currentStep = 2;
+  selectedButtons = {};
+  points = [];
+  currentLegIndex = 0;
+
+  document.querySelectorAll(".step").forEach((step) => {
+    step.classList.remove("active");
+  });
+  document.querySelector("#step2").classList.add("active");
+
+  document.querySelectorAll(".number-btn.selected").forEach((button) => {
+    button.classList.remove("selected");
+    button.classList.remove("active");
+  });
+  document.getElementById("summary").style.display = "none";
+  updateNextButtonVisibility();
 });
 
 updateNextButtonVisibility();
