@@ -5,8 +5,7 @@ let points = [];
 let currentLegIndex = 0;
 
 const liffId = "2006065768-no9MYKVg";
-liff
-  .init({ liffId: liffId })
+liff.init({ liffId: liffId })
   .then(() => {
     if (!liff.isLoggedIn()) {
       liff.login();
@@ -301,7 +300,7 @@ document.getElementById("startOver").addEventListener("click", () => {
     });
   }
   
-  if (text !== "" && liff) {
+  if (text !== "") {
     liff
       .shareTargetPicker(
         [
