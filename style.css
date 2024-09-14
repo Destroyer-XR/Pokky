@@ -141,6 +141,26 @@ h2 {
     color: #FFD700;
 }
 
+.custom-popup-error {
+    border: 5px solid #f1c40f;
+    border-radius: 10px; /* เพิ่มมุมโค้งให้กับ border */
+  }
+  
+  .custom-title-error {
+    color: #FF0000; /* เปลี่ยนสีของข้อความใน title เป็นสีแดงเพื่อให้เข้ากับ error */
+  }
+  
+  .custom-content-error {
+    color: #181C14; /* เปลี่ยนสีของข้อความใน content */
+  }
+  
+  .custom-confirm-button-error {
+    background-color: #FFD700; /* เปลี่ยนสีพื้นหลังของปุ่ม confirm */
+    color: #181C14; /* เปลี่ยนสีของข้อความในปุ่ม confirm */
+    border: 1px solid #181C14; /* เพิ่ม border ให้กับปุ่ม confirm */
+  }
+
+
 @media (max-width: 430px) {
     .number-btn {
         width: 80px;
